@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "400769683032",
+    "project_id": "samif-if",
+    "storage_bucket": "samif-if.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400769683032:android:5db730f1c54c303cf4442d",
+        "android_client_info": {
+          "package_name": "com.example.flutterfire_cli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACjO0lcU99iXmSOiQD6A_-Lgz5b3foflQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400769683032:android:73fd8d28080aed6cf4442d",
+        "android_client_info": {
+          "package_name": "com.example.samif"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACjO0lcU99iXmSOiQD6A_-Lgz5b3foflQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
