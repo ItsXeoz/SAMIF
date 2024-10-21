@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:samif/blocs/login/login_bloc.dart';
+import 'package:samif/blocs/login/login_event.dart';
+import 'package:samif/blocs/login/login_state.dart';
+import 'package:samif/pages/home_page.dart';
 import 'package:samif/pages/register_page.dart';
 import 'package:samif/widget/form_field.dart';
 import 'package:samif/widget/password_form_field.dart';
@@ -21,7 +26,26 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.green[400],
       body: Container(
-        child: loginForm(),
+        child: BlocListener<LoginBloc, LoginState>(
+          listener: (context, state) {
+            if (state is LoginSuccess) {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            }
+            if (state is LoginError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Login Error: ${state.loginError}")));
+            }
+          },
+          child: BlocBuilder<LoginBloc, LoginState>(
+            builder: (context, state) {
+              if (state is LoginLoading) {
+                return Center(child: CircularProgressIndicator());
+              }
+              return loginForm();
+            },
+          ),
+        ),
       ),
     );
   }
@@ -76,7 +100,9 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        if (globalKey.currentState!.validate()) {}
+                        if (globalKey.currentState!.validate()) {
+                          context.read<LoginBloc>().add(LoginButtonActionCall(loginEmail: emailController.text, loginPassword: passwordController.text));
+                        }
                       },
                       child: Text("Login"),
                     ),

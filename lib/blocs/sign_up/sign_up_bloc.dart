@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:samif/blocs/sign_up_event.dart';
-import 'package:samif/blocs/sign_up_state.dart';
+import 'package:samif/blocs/sign_up/sign_up_event.dart';
+import 'package:samif/blocs/sign_up/sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final FirebaseAuth auth = FirebaseAuth.instance;

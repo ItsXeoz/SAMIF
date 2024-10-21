@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:samif/blocs/sign_up_bloc.dart';
-import 'package:samif/blocs/sign_up_event.dart';
-import 'package:samif/blocs/sign_up_state.dart';
+import 'package:samif/blocs/sign_up/sign_up_bloc.dart';
+import 'package:samif/blocs/sign_up/sign_up_event.dart';
+import 'package:samif/blocs/sign_up/sign_up_state.dart';
 import 'package:samif/pages/home_page.dart';
 import 'package:samif/widget/form_field.dart';
 import 'package:samif/widget/password_form_field.dart';
