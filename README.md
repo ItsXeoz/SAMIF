@@ -1,6 +1,6 @@
 # samif
 
-A new Flutter project.
+Sistem Absensi Mahasiswa Informatika
 
 ## Getting Started
 
