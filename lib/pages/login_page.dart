@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[400],
+      backgroundColor: Colors.green[400],  
       body: Container(
         child: BlocListener<LoginBloc, LoginState>(
           listener: (context, state) {
