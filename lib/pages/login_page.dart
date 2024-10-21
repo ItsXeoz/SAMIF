@@ -101,7 +101,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (globalKey.currentState!.validate()) {
-                          context.read<LoginBloc>().add(LoginButtonActionCall(loginEmail: emailController.text, loginPassword: passwordController.text));
+                          context.read<LoginBloc>().add(LoginButtonActionCall(
+                              loginEmail: emailController.text,
+                              loginPassword: passwordController.text));
                         }
                       },
                       child: Text("Login"),
