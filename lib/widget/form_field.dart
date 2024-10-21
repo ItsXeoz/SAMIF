@@ -16,7 +16,7 @@ class MyFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: TextFormField(
-        controller: TextEditingController(),
+        controller: textEditingController,
         validator: validator,
         decoration: InputDecoration(
             hintText: hint,

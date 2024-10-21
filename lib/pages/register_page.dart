@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:samif/blocs/sign_up_bloc.dart';
+import 'package:samif/blocs/sign_up_event.dart';
+import 'package:samif/blocs/sign_up_state.dart';
+import 'package:samif/pages/home_page.dart';
 import 'package:samif/widget/form_field.dart';
 import 'package:samif/widget/password_form_field.dart';
 
@@ -22,7 +27,31 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green[400],
-      body: Container(child: registerForm()),
+      body: BlocListener<SignUpBloc, SignUpState>(
+        listener: (context, state) {
+          if (state is SignUpSucces) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+          }
+          if (state is SignUpError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Login Error: ${state.signUpError}")));
+            print("Login Error: ${state.signUpError}");
+          }
+        },
+        child: BlocBuilder<SignUpBloc, SignUpState>(
+          builder: (context, state) {
+            if (state is SignUpLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return registerForm();
+          },
+        ),
+      ),
     );
   }
 
@@ -87,6 +116,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     if (value!.isEmpty) {
                       return "Please type your Confirm Password";
                     }
+                    if (value != passwordController.text) {
+                      return "Passwords do not match";
+                    }
                     return null;
                   },
                 ),
@@ -96,7 +128,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        if (globalKey.currentState!.validate()) {}
+                        if (globalKey.currentState!.validate()) {
+                          context.read<SignUpBloc>().add(SignUpButtonActionCall(
+                              signUpEmail: emailController.text,
+                              signUpPassword: passwordController.text));
+                        }
                       },
                       child: Text("Register"),
                     ),

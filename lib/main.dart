@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:samif/auth/auth.dart';
+import 'package:samif/blocs/sign_up_bloc.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -17,9 +19,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+    return BlocProvider(
+      create: (context) => SignUpBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: AuthPage(),
+      ),
     );
   }
 }

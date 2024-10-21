@@ -40,6 +40,9 @@ dependencies:
   cloud_firestore: ^5.4.4
   firebase_storage: ^12.3.3
   google_fonts: ^6.2.1
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  lottie: ^3.1.3
 
 
 
